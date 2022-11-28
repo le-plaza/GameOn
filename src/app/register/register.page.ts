@@ -32,8 +32,6 @@ export class RegisterPage implements OnInit {
 
     if (flag) {
       this.router.navigate(['login']);
-    } else {
-      alert('Nombre de usuario o email en uso.');
     }
   }
 

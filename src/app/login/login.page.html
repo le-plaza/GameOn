@@ -16,7 +16,7 @@
     </ion-item>
     <ion-row>
       <ion-col>
-        <ion-button type="submit" expand="block" color="success">Iniciar sesion</ion-button>
+        <ion-button type="submit" [disabled]="!formulario.valid" expand="block" color="success">Iniciar sesion</ion-button>
         <a [routerLink]="['/register']">Registrate ahora!</a>
       </ion-col>
     </ion-row>
