@@ -14,6 +14,10 @@ export class FirebaseService {
     return this.db.collection(tabla).valueChanges({ idField: 'id' });
   }
 
+  getById(tabla: string, id: string) {
+    return this.db.collection(tabla).doc(id).valueChanges({ idField: 'id' });
+  }
+
   setData(tabla: string, data: any) {
     return this.db.collection(tabla).doc().set(data);
   }

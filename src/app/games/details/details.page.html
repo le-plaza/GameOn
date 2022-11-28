@@ -1,0 +1,32 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Detalles</ion-title>
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-card>
+    <img src="{{ juego?.imagen }}" alt="">
+    <ion-card-header>
+      <ion-card-subtitle *ngFor="let g of juego?.generos">{{ g.name }} </ion-card-subtitle>
+      <ion-card-title>{{ juego?.titulo }}</ion-card-title>
+    </ion-card-header>
+
+    <ion-card-content>
+      <b>Rating: {{ juego?.rating }} / 5.0</b>
+    </ion-card-content>
+  </ion-card>
+
+  <ion-slides [options]="options">
+    <ion-slide *ngFor="let ss of juego?.screenshots">
+      <ion-card>
+        <img src="{{ ss.image }}" alt="">
+      </ion-card>
+    </ion-slide>
+  </ion-slides>
+  
+</ion-content>
+<ion-button expand="block" color="danger">Reembolsar</ion-button>
