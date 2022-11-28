@@ -1,0 +1,7 @@
+{
+  "name": "GameOn",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}
