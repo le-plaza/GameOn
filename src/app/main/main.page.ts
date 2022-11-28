@@ -32,7 +32,7 @@ export class MainPage implements OnInit {
       id_juego: juego.id,
       id_user: this.token,
       titulo: juego.name,
-      image: juego.background_image,
+      imagen: juego.background_image,
       rating: juego.rating,
       generos: juego.genres,
       screenshots: juego.short_screenshots

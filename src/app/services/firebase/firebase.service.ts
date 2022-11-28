@@ -17,4 +17,8 @@ export class FirebaseService {
   setData(tabla: string, data: any) {
     return this.db.collection(tabla).doc().set(data);
   }
+
+  deleteData(tabla: string, id: string) {
+    return this.db.collection(tabla).doc(id).delete();
+  }
 }
