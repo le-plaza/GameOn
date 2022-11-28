@@ -6,6 +6,15 @@ export const environment = {
   production: false
 };
 
+const firebaseConfig = {
+  apiKey: "AIzaSyCUgLIrz1Vl0lFoB24Fz7UCQmlJWgUalco",
+  authDomain: "gameon-d7ec0.firebaseapp.com",
+  projectId: "gameon-d7ec0",
+  storageBucket: "gameon-d7ec0.appspot.com",
+  messagingSenderId: "396119350786",
+  appId: "1:396119350786:web:3603d98e362b9990de511b"
+};
+
 /*
  * For easier debugging in development mode, you can import the following file
  * to ignore zone related error stack frames such as `zone.run`, `zoneDelegate.invokeTask`.
