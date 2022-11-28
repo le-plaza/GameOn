@@ -1,14 +1,21 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>Login</ion-title>
+    <ion-title>Registrarse</ion-title>
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
-  <form [formGroup]="formulario" (submit)="login()">
+  <form [formGroup]="formulario" (submit)="register()">
     <ion-item lines="full">
       <ion-label position="floating">Nombre de usuario:</ion-label>
       <ion-input type="text" formControlName="username"></ion-input>
+    </ion-item>
+    <ion-item lines="full">
+      <ion-label position="floating">Correo:</ion-label>
+      <ion-input type="text" formControlName="email"></ion-input>
     </ion-item>
     <ion-item lines="full">
       <ion-label position="floating">Contraseña:</ion-label>
@@ -16,8 +23,7 @@
     </ion-item>
     <ion-row>
       <ion-col>
-        <ion-button type="submit" expand="block" color="success">Iniciar sesion</ion-button>
-        <a [routerLink]="['/register']">Registrate ahora!</a>
+        <ion-button type="submit" expand="block" color="success">Registrarse</ion-button>
       </ion-col>
     </ion-row>
   </form>

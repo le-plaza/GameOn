@@ -15,12 +15,22 @@ export class AuthService {
     });
   }
 
+  validateRegister(data: any) {
+    const result = this.usuarios.filter(ar => data.username === ar.username || data.email === ar.email);
+
+    if (result.length == 0) {
+      this.firebase.setData('usuarios', data);
+
+      return true;
+    } else {
+      return false;
+    }
+  }
+
   validateLogin(data: any) {
-    // SEE IF USER EXISTS IN OBJECT
     const result = this.usuarios.filter(ar => data.username === ar.username && data.password === ar.password);
 
     if (result.length > 0) {
-      // GET USER AND GET TOKEN
       const user = result[0];
       localStorage.setItem('token', user.id);
 
