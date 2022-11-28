@@ -1,0 +1,38 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Editar perfil</ion-title>
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <form [formGroup]="formulario" (submit)="editProfile()">
+    <ion-item lines="full">
+      <ion-label position="floating">Nombre completo:</ion-label>
+      <ion-input type="text" formControlName="fullname" value="{{ user?.fullname }}"></ion-input>
+    </ion-item>
+    <ion-item lines="full">
+      <ion-label position="floating">Nombre de usuario:</ion-label>
+      <ion-input type="text" formControlName="username" value="{{ user?.username }}"></ion-input>
+    </ion-item>
+    <ion-item lines="full">
+      <ion-label position="floating">Correo:</ion-label>
+      <ion-input type="text" formControlName="email" value="{{ user?.email }}"></ion-input>
+    </ion-item>
+    <ion-item lines="full">
+      <ion-label position="floating">Contraseña:</ion-label>
+      <ion-input type="text" formControlName="password" value="{{ user?.password }}"></ion-input>
+    </ion-item>
+    <ion-item lines="full">
+      <ion-label position="floating">Genero:</ion-label>
+      <ion-input type="text" formControlName="genero" value="{{ user?.genero }}"></ion-input>
+    </ion-item>
+    <ion-row>
+      <ion-col>
+        <ion-button type="submit" expand="block" color="warning">Editar</ion-button>
+      </ion-col>
+    </ion-row>
+  </form>
+</ion-content>
