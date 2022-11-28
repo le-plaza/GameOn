@@ -6,7 +6,7 @@ export const environment = {
   production: false
 };
 
-const firebaseConfig = {
+export const firebaseConfig = {
   apiKey: "AIzaSyCUgLIrz1Vl0lFoB24Fz7UCQmlJWgUalco",
   authDomain: "gameon-d7ec0.firebaseapp.com",
   projectId: "gameon-d7ec0",

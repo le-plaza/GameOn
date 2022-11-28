@@ -1,0 +1,20 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Inicio</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-card *ngFor="let j of juegos">
+    <img src="{{ j.background_image }}" alt="...">
+    <ion-card-header>
+      <ion-card-subtitle *ngFor="let g of j.genres">{{ g.name }} </ion-card-subtitle>
+      <ion-card-title>{{ j.name }}</ion-card-title>
+    </ion-card-header>
+    <ion-row>
+      <ion-col>
+        <ion-button (click)="buyGame(j)" expand="block" color="primary">Comprar</ion-button>
+      </ion-col>
+    </ion-row>
+  </ion-card>
+</ion-content>
