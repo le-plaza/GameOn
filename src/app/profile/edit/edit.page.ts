@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
+import { AuthService } from 'src/app/services/auth/auth.service';
 import { FirebaseService } from 'src/app/services/firebase/firebase.service';
 
 @Component({
@@ -23,6 +24,7 @@ export class EditPage implements OnInit {
     private activatedRoute: ActivatedRoute,
     private firebase: FirebaseService,
     private fb: FormBuilder,
+    private auth: AuthService,
     private router: Router
   ) { }
 
@@ -35,8 +37,11 @@ export class EditPage implements OnInit {
   }
 
   editProfile() {
-    this.firebase.editData('usuarios', this.token, this.formulario.value);
-    this.router.navigate(['profile']);
+    const flag = this.auth.validateEdit(this.formulario.value);
+
+    if (flag) {
+      this.router.navigate(['profile']);
+    }
   }
 
 }

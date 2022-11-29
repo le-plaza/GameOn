@@ -60,6 +60,30 @@ export class AuthService {
     }
   }
 
+  validateEdit(data: any) {
+    const token: any = localStorage.getItem('token');
+    const result = this.usuarios.filter(ar => (data.username === ar.username || data.email === ar.email) && ar.id !== token);
+
+    if (result.length == 0) {
+      this.firebase.editData('usuarios', token, data);
+      this.alert.createAlert('Perfil editado correctamente.');
+
+      return true;
+    } else {
+
+      let message = '';
+      if (result.some(ar => ar.username === data.username)) {
+        message += 'Username no disponible.<br>'
+      }
+      if (result.some(ar => ar.email === data.email)) {
+        message += 'Correo no disponible.';
+      }
+      this.alert.createAlert(message);
+      
+      return false;
+    }
+  }
+
   validateToken() {
     const token = localStorage.getItem('token');
 
@@ -69,4 +93,5 @@ export class AuthService {
       return true;
     }
   }
+
 }
