@@ -28,13 +28,11 @@ export class AuthService {
 
       return true;
     } else {
-      const user = result[0]
-
       let message = '';
-      if (user.username === data.username) {
+      if (result.some(ar => ar.username === data.username)) {
         message += 'Username no disponible.<br>'
       }
-      if (user.email === data.email) {
+      if (result.some(ar => ar.email === data.email)) {
         message += 'Correo no disponible.'
       }
 
