@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { EventService } from './services/others/event/event.service';
 
 @Component({
   selector: 'app-root',
@@ -6,5 +7,13 @@ import { Component } from '@angular/core';
   styleUrls: ['app.component.scss'],
 })
 export class AppComponent {
-  constructor() {}
+  admin: boolean = false;
+  
+  constructor(
+    private event: EventService
+  ) {
+    this.event.getObservable().subscribe((res) => {
+      this.admin = res;
+    });
+  }
 }

@@ -25,7 +25,7 @@
             <ion-label>Mi perfil</ion-label>
           </ion-item>
         </ion-menu-toggle>
-        <ion-menu-toggle>
+        <ion-menu-toggle *ngIf="admin">
           <ion-item [routerLink]="['/admin']">
             <ion-icon name="key-outline" slot="start"></ion-icon>
             <ion-label>Administracion</ion-label>

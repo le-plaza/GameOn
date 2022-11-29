@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { FirebaseService } from '../firebase/firebase.service';
 import { AlertService } from '../others/alert/alert.service';
+import { EventService } from '../others/event/event.service';
 
 @Injectable({
   providedIn: 'root'
@@ -10,7 +11,8 @@ export class AuthService {
 
   constructor(
     private firebase: FirebaseService,
-    private alert: AlertService
+    private alert: AlertService,
+    private event: EventService
   ) { 
     this.firebase.getData('usuarios').subscribe((res) => {
       this.usuarios = res;
@@ -50,10 +52,21 @@ export class AuthService {
 
       localStorage.setItem('token', user.id);
       this.alert.createAlert('Ingresando...');
+      this.event.publish(user.admin);
 
       return true;
     } else {
       return false;
+    }
+  }
+
+  validateToken() {
+    const token = localStorage.getItem('token');
+
+    if (token == null) {
+      return false;
+    } else {
+      return true;
     }
   }
 }

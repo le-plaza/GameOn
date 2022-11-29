@@ -21,6 +21,9 @@ export class LoginPage implements OnInit {
   ) { }
 
   ngOnInit() {
+  }
+
+  ionViewDidEnter() {
     localStorage.clear();
   }
 
