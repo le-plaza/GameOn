@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
+import { AuthGuard } from '../guards/auth.guard';
 
 import { ProfilePage } from './profile.page';
 
@@ -10,7 +11,8 @@ const routes: Routes = [
   },
   {
     path: 'edit/:id',
-    loadChildren: () => import('./edit/edit.module').then( m => m.EditPageModule)
+    loadChildren: () => import('./edit/edit.module').then( m => m.EditPageModule),
+    canActivate: [AuthGuard]
   }
 ];
 
