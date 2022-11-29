@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { FirebaseService } from 'src/app/services/firebase/firebase.service';
+import { AlertService } from 'src/app/services/others/alert/alert.service';
 
 @Component({
   selector: 'app-details',
@@ -20,7 +21,9 @@ export class DetailsPage implements OnInit {
 
   constructor(
     private activatedRoute: ActivatedRoute,
-    private firebase: FirebaseService
+    private firebase: FirebaseService,
+    private router: Router,
+    private alert: AlertService
   ) { }
 
   ngOnInit() {
@@ -29,6 +32,12 @@ export class DetailsPage implements OnInit {
     this.firebase.getById('juegos', this.id).subscribe((res) => {
       this.juego = res;
     });
+  }
+
+  refundGame(juego: any) {
+    this.router.navigate(['games']);
+    this.firebase.deleteData('juegos', juego.id);
+    this.alert.createAlert('Has devuelto: ' + juego.titulo);
   }
 
 }

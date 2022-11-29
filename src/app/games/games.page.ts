@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FirebaseService } from '../services/firebase/firebase.service';
+import { AlertService } from '../services/others/alert/alert.service';
 
 @Component({
   selector: 'app-games',
@@ -10,7 +11,8 @@ export class GamesPage implements OnInit {
   juegos: any[] = [];
 
   constructor(
-    private firebase: FirebaseService
+    private firebase: FirebaseService,
+    private alert: AlertService
   ) { }
 
   ngOnInit() {
@@ -25,6 +27,7 @@ export class GamesPage implements OnInit {
 
   refundGame(juego: any) {
     this.firebase.deleteData('juegos', juego.id);
+    this.alert.createAlert('Has devuelto: ' + juego.titulo);
   }
 
 }

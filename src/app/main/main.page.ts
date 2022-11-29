@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ApiService } from '../services/api/api.service';
 import { FirebaseService } from '../services/firebase/firebase.service';
+import { AlertService } from '../services/others/alert/alert.service';
 
 @Component({
   selector: 'app-main',
@@ -13,7 +14,8 @@ export class MainPage implements OnInit {
 
   constructor(
     private api: ApiService,
-    private firebase: FirebaseService
+    private firebase: FirebaseService,
+    private alert: AlertService
   ) { }
 
   ngOnInit() {
@@ -39,6 +41,7 @@ export class MainPage implements OnInit {
     }
 
     this.firebase.setData('juegos', data);
+    this.alert.createAlert('Has comprado: ' + juego.name);
   }
   
   deleteBuyedGames(array1: any[], array2: any[]) {

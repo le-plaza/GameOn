@@ -1,0 +1,36 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Administracion</ion-title>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-card *ngFor="let u of usuarios">
+
+    <ion-item>
+      <ion-label position="stacked">Nombre de usuario:</ion-label>
+      <ion-input value="{{ u.username }}" [readonly]="true"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label position="stacked">Correo:</ion-label>
+      <ion-input value="{{ u.email }}" [readonly]="true"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label position="stacked">Admin:</ion-label>
+      <ion-input value="{{ u.admin }}" [readonly]="true"></ion-input>
+    </ion-item>
+
+    <ion-row>
+      <ion-col size="6">
+        <ion-button expand="full" color="warning">Dar admin</ion-button>
+      </ion-col>
+      <ion-col size="6">
+        <ion-button (click)="deleteProfile(u.id)" expand="full" color="danger">Eliminar</ion-button>
+      </ion-col>
+    </ion-row>
+
+  </ion-card>
+</ion-content>
