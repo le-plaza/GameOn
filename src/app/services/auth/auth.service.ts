@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { IUser } from 'src/app/interfaces/user';
 import { FirebaseService } from '../firebase/firebase.service';
 import { AlertService } from '../others/alert/alert.service';
 import { EventService } from '../others/event/event.service';
@@ -19,8 +20,10 @@ export class AuthService {
     });
   }
 
-  validateRegister(data: any) {
-    const result = this.usuarios.filter(ar => data.username === ar.username || data.email === ar.email);
+  validateRegister(data: IUser) {
+    const result = this.usuarios.filter(
+      (ar: IUser) => data.username.toLowerCase() === ar.username.toLowerCase() 
+        || data.email.toLowerCase() === ar.email.toLowerCase());
 
     if (result.length == 0) {
       this.firebase.setData('usuarios', data);
@@ -29,10 +32,10 @@ export class AuthService {
       return true;
     } else {
       let message = '';
-      if (result.some(ar => ar.username === data.username)) {
+      if (result.some((ar: IUser) => ar.username.toLowerCase() === data.username.toLowerCase())) {
         message += 'Username no disponible.<br>'
       }
-      if (result.some(ar => ar.email === data.email)) {
+      if (result.some((ar: IUser) => ar.email.toLowerCase() === data.email.toLowerCase())) {
         message += 'Correo no disponible.'
       }
 
@@ -42,11 +45,12 @@ export class AuthService {
     }
   }
 
-  validateLogin(data: any) {
-    const result = this.usuarios.filter(ar => data.username === ar.username && data.password === ar.password);
+  validateLogin(data: IUser) {
+    const result = this.usuarios.filter((ar: IUser) => 
+      data.username.toLowerCase() === ar.username.toLowerCase() && data.password === ar.password);
 
     if (result.length > 0) {
-      const user = result[0];
+      const user: IUser = result[0];
 
       localStorage.setItem('token', user.id);
       this.alert.createAlert('Ingresando...');
@@ -54,6 +58,7 @@ export class AuthService {
 
       return true;
     } else {
+      this.alert.createAlert('Correo o contraseña incorrectos.');
       return false;
     }
   }

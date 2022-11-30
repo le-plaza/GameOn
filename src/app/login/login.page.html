@@ -5,7 +5,7 @@
 </ion-header>
 
 <ion-content>
-  <form [formGroup]="formulario" (submit)="login()">
+  <form [formGroup]="formulario" (submit)="login()" (keyup.enter)="login()">
     <ion-item lines="full">
       <ion-label position="floating">Nombre de usuario:</ion-label>
       <ion-input type="text" formControlName="username"></ion-input>

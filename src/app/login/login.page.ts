@@ -32,8 +32,6 @@ export class LoginPage implements OnInit {
 
     if (flag) {
       this.router.navigate(['main']);
-    } else {
-      alert('Nombre de usuario o contraseña incorrecta.');
     }
   }
 
