@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { IUser } from '../interfaces/user';
 import { FirebaseService } from '../services/firebase/firebase.service';
 import { AlertService } from '../services/others/alert/alert.service';
 
@@ -8,7 +9,7 @@ import { AlertService } from '../services/others/alert/alert.service';
   styleUrls: ['./admin.page.scss'],
 })
 export class AdminPage implements OnInit {
-  usuarios: any[] = [];
+  usuarios: IUser[] = [];
 
   constructor(
     private firebase: FirebaseService,
@@ -16,8 +17,8 @@ export class AdminPage implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.firebase.getData('usuarios').subscribe((res) => {
-      const result = res.filter((i: any) => i.admin === false);
+    this.firebase.getData('usuarios').subscribe((res: any[]) => {
+      const result = res.filter(i => i.id !== localStorage.getItem('token'))
       this.usuarios = result;
     });
   }
