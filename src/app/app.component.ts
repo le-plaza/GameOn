@@ -8,12 +8,19 @@ import { EventService } from './services/others/event/event.service';
 })
 export class AppComponent {
   admin: boolean = false;
+  counter: number = 0;
   
   constructor(
     private event: EventService
   ) {
-    this.event.getObservable().subscribe((res) => {
+    this.event.getAdmin().subscribe((res) => {
+      console.log(res);
       this.admin = res;
+    });
+
+    this.event.getCounter().subscribe((res) => {
+      console.log(res);
+      this.counter = res;
     });
   }
 }

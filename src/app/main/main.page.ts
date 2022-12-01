@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ApiService } from '../services/api/api.service';
 import { FirebaseService } from '../services/firebase/firebase.service';
 import { AlertService } from '../services/others/alert/alert.service';
+import { EventService } from '../services/others/event/event.service';
 
 @Component({
   selector: 'app-main',
@@ -15,7 +16,8 @@ export class MainPage implements OnInit {
   constructor(
     private api: ApiService,
     private firebase: FirebaseService,
-    private alert: AlertService
+    private alert: AlertService,
+    private event: EventService
   ) { }
 
   ngOnInit() {
@@ -25,6 +27,8 @@ export class MainPage implements OnInit {
       this.firebase.getData('juegos').subscribe((buyedgames) => {
         const buyed = buyedgames.filter((i: any) => i.id_user === this.token);
         this.juegos = this.deleteBuyedGames(allgames.results, buyed);
+
+        this.event.setCounter(buyed.length);
       });
     });
   }

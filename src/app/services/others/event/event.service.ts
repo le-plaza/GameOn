@@ -5,15 +5,24 @@ import { Subject } from 'rxjs';
   providedIn: 'root'
 })
 export class EventService {
-  event = new Subject();
+  adminEvent = new Subject();
+  counterEvent = new Subject();
 
   constructor() { }
 
-  publish(data: any) {
-    this.event.next(data);
+  setCounter(data: number) {
+    this.counterEvent.next(data);
   }
 
-  getObservable(): Subject<any> {
-    return this.event;
+  getCounter(): Subject<any> {
+    return this.counterEvent;
+  } 
+
+  setAdmin(data: boolean) {
+    this.adminEvent.next(data);
+  }
+
+  getAdmin(): Subject<any> {
+    return this.adminEvent;
   }
 }

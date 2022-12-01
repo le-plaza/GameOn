@@ -15,6 +15,7 @@
         </ion-menu-toggle>
         <ion-menu-toggle>
           <ion-item [routerLink]="['/games']">
+            <ion-badge *ngIf="counter > -1" slot="end">{{ counter }}</ion-badge>
             <ion-icon name="game-controller-outline" slot="start"></ion-icon>
             <ion-label>Mis Juegos</ion-label>
           </ion-item>

@@ -54,7 +54,7 @@ export class AuthService {
 
       localStorage.setItem('token', user.id);
       this.alert.createAlert('Ingresando...');
-      this.event.publish(user.admin);
+      this.event.setAdmin(user.admin);
 
       return true;
     } else {
