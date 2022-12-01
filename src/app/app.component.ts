@@ -14,12 +14,10 @@ export class AppComponent {
     private event: EventService
   ) {
     this.event.getAdmin().subscribe((res) => {
-      console.log(res);
       this.admin = res;
     });
 
     this.event.getCounter().subscribe((res) => {
-      console.log(res);
       this.counter = res;
     });
   }

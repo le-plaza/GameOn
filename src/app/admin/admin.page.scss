@@ -2,3 +2,7 @@ ion-item {
     pointer-events: none;
     touch-action: none;
 }
+
+ion-content:not(ion-card) {
+    text-align: center;
+}
