@@ -8,7 +8,9 @@
 </ion-header>
 
 <ion-content>
-  <b *ngIf="juegos.length == 0">No se han encontrado juegos</b>
+  <div class="textmargin">
+    <b *ngIf="juegos.length == 0">No se han encontrado juegos</b>
+  </div>
   <ion-card *ngFor="let j of juegos">
     <img src="{{ j.imagen }}" alt="">
     <ion-card-header>

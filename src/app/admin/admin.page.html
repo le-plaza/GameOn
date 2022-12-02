@@ -8,7 +8,9 @@
 </ion-header>
 
 <ion-content>
-  <b *ngIf="usuarios.length == 0">No hay usuarios registrados.</b>
+  <div class="textmargin">
+    <b *ngIf="usuarios.length == 0">No hay usuarios registrados.</b>
+  </div>
   <ion-card *ngFor="let u of usuarios">
 
     <ion-item>
@@ -36,9 +38,7 @@
 </ion-content>
 
 <ion-footer>
-  <ion-row>
-    <ion-col>
-      <ion-button [routerLink]="['register']" expand="block" color="primary">Agregar usuario</ion-button>
-    </ion-col>
-  </ion-row>
+  <ion-toolbar>
+    <ion-button [routerLink]="['register']" expand="block" color="primary">Agregar usuario</ion-button>
+  </ion-toolbar>
 </ion-footer>
