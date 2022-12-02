@@ -97,4 +97,14 @@ export class AuthService {
     }
   }
 
+  validateAdmin() {
+    const admin = localStorage.getItem('admin');
+
+    if (admin == null || !admin) {
+      return false;
+    } else {
+      return true;
+    }
+  }
+
 }
