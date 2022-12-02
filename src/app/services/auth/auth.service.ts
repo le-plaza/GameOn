@@ -53,6 +53,8 @@ export class AuthService {
       const user: IUser = result[0];
 
       localStorage.setItem('token', user.id);
+      localStorage.setItem('admin', user.admin.toString());
+
       this.alert.createAlert('Ingresando...');
       this.event.setAdmin(user.admin);
 
@@ -100,7 +102,7 @@ export class AuthService {
   validateAdmin() {
     const admin = localStorage.getItem('admin');
 
-    if (admin == null || !admin) {
+    if (admin == "false" || admin == null) {
       return false;
     } else {
       return true;

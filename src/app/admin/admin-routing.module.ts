@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
+import { AdminGuard } from '../guards/admin/admin.guard';
 
 import { AdminPage } from './admin.page';
 
@@ -10,7 +11,8 @@ const routes: Routes = [
   },
   {
     path: 'register',
-    loadChildren: () => import('./register/register.module').then( m => m.RegisterPageModule)
+    loadChildren: () => import('./register/register.module').then( m => m.RegisterPageModule),
+    canActivate: [AdminGuard]
   }
 ];
 
