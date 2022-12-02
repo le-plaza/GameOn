@@ -34,6 +34,12 @@
         <ion-button (click)="deleteProfile(u)" [disabled]="u.admin" expand="full" color="danger">Eliminar</ion-button>
       </ion-col>
     </ion-row>
+    <ion-row>
+      <ion-col size="12">
+        <ion-button [routerLink]="['/profile', 'edit', u.id]" 
+          class="buttonmargin" expand="full" color="warning">Editar perfil</ion-button>
+      </ion-col>
+    </ion-row>
   </ion-card>
 </ion-content>
 

@@ -65,12 +65,11 @@ export class AuthService {
     }
   }
 
-  validateEdit(data: any) {
-    const token: any = localStorage.getItem('token');
-    const result = this.usuarios.filter(ar => (data.username === ar.username || data.email === ar.email) && ar.id !== token);
+  validateEdit(data: any, id: string) {
+    const result = this.usuarios.filter(ar => (data.username === ar.username || data.email === ar.email) && ar.id !== id);
 
     if (result.length == 0) {
-      this.firebase.editData('usuarios', token, data);
+      this.firebase.editData('usuarios', id, data);
       this.alert.createAlert('Perfil editado correctamente.');
 
       return true;
