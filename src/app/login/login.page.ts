@@ -31,7 +31,7 @@ export class LoginPage implements OnInit {
     const flag = this.auth.validateLogin(this.formulario.value);
 
     if (flag) {
-      this.router.navigate(['main']);
+      this.router.navigate(['main', '1']);
     }
   }
 

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
 import { ApiService } from '../services/api/api.service';
 import { FirebaseService } from '../services/firebase/firebase.service';
 import { AlertService } from '../services/others/alert/alert.service';
@@ -11,19 +12,23 @@ import { EventService } from '../services/others/event/event.service';
 })
 export class MainPage implements OnInit {
   token: string | undefined | null = '';
+  currentPage: any = ''
   juegos: any[] = [];
 
   constructor(
+    private activatedRoute: ActivatedRoute,
     private api: ApiService,
     private firebase: FirebaseService,
     private alert: AlertService,
-    private event: EventService
+    private event: EventService,
+    private router: Router
   ) { }
 
   ngOnInit() {
+    this.currentPage = this.activatedRoute.snapshot.paramMap.get('page');
     this.token = localStorage.getItem('token');
 
-    this.api.getGames().subscribe((allgames: any) => {
+    this.api.getGames(this.currentPage).subscribe((allgames: any) => {
       this.firebase.getData('juegos').subscribe((buyedgames) => {
         const buyed = buyedgames.filter((i: any) => i.id_user === this.token);
         this.juegos = this.deleteBuyedGames(allgames.results, buyed);
@@ -31,6 +36,13 @@ export class MainPage implements OnInit {
         this.event.setCounter(buyed.length);
       });
     });
+  }
+
+  previousPage() {
+    this.router.navigate(['main', parseInt(this.currentPage) - 1]);
+  }
+  nextPage() {
+    this.router.navigate(['main', parseInt(this.currentPage) + 1]);
   }
 
   buyGame(juego: any) {

@@ -10,7 +10,7 @@ export class ApiService {
     private http: HttpClient
   ) { }
 
-  getGames() {
-    return this.http.get('https://api.rawg.io/api/games?key=4a73232670134cab91364b6491cca14a');
+  getGames(page: string) {
+    return this.http.get('https://api.rawg.io/api/games?key=4a73232670134cab91364b6491cca14a&page=' + page);
   }
 }
