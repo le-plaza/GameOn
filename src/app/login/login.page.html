@@ -12,7 +12,10 @@
     </ion-item>
     <ion-item lines="full">
       <ion-label position="floating">Contraseña:</ion-label>
-      <ion-input type="password" formControlName="password"></ion-input>
+      <ion-input type="password" id="password" formControlName="password"></ion-input>
+      <ion-button (click)="passwordbtn()" slot="end">
+        <ion-icon name="eye-outline"></ion-icon>
+      </ion-button>
     </ion-item>
     <ion-row>
       <ion-col>

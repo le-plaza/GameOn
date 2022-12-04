@@ -1,3 +1,11 @@
 ion-col {
     text-align: center;
 }
+
+ion-item {
+    ion-button {
+        margin-top: 15px;
+        --background: transparentize(100);
+        --background-hover: #FFFFFF;
+    }
+}

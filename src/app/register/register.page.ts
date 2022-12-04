@@ -9,11 +9,12 @@ import { AuthService } from '../services/auth/auth.service';
   styleUrls: ['./register.page.scss'],
 })
 export class RegisterPage implements OnInit {
+  showPassword: boolean = false;
   formulario: FormGroup = this.fb.group({
     fullname: [''],
     username: ['', [Validators.required]],
     email: ['', [Validators.required, Validators.email]],
-    password: ['', Validators.minLength(4)],
+    password: ['', [Validators.required, Validators.minLength(4)]],
     genero: [''],
     admin: [false]
   });
@@ -25,6 +26,14 @@ export class RegisterPage implements OnInit {
   ) { }
 
   ngOnInit() {
+  }
+
+  passwordbtn() {
+    this.showPassword = !this.showPassword;
+    const option = this.showPassword ? 'text' : 'password';
+
+    const input = document.getElementById('password');
+    input?.setAttribute('type', option);
   }
 
   register() {

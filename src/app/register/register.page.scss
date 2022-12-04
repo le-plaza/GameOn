@@ -1,3 +1,11 @@
 .alert {
     white-space: pre-line;
 }
+
+ion-item {
+    ion-button {
+        margin-top: 15px;
+        --background: transparentize(100);
+        --background-hover: #FFFFFF;
+    }
+}

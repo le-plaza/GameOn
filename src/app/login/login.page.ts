@@ -9,6 +9,7 @@ import { AuthService } from '../services/auth/auth.service';
   styleUrls: ['./login.page.scss'],
 })
 export class LoginPage implements OnInit {
+  showPassword: boolean = false;
   formulario: FormGroup = this.fb.group({
     username: ['', [Validators.required]],
     password: ['', [Validators.required]]
@@ -25,6 +26,14 @@ export class LoginPage implements OnInit {
 
   ionViewDidEnter() {
     localStorage.clear();
+  }
+
+  passwordbtn() {
+    this.showPassword = !this.showPassword;
+    const option = this.showPassword ? 'text' : 'password';
+
+    const input = document.getElementById('password');
+    input?.setAttribute('type', option);
   }
 
   login() {
