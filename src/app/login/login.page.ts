@@ -26,6 +26,7 @@ export class LoginPage implements OnInit {
 
   ionViewDidEnter() {
     localStorage.clear();
+    this.formulario.reset();
   }
 
   passwordbtn() {
