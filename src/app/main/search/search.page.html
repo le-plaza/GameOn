@@ -1,0 +1,23 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="main/1"></ion-back-button>
+    </ion-buttons>
+    <ion-title>Buscar</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-card>
+    <img src="{{ searched?.background_image }}" alt="...">
+    <ion-card-header>
+      <ion-card-subtitle *ngFor="let g of searched?.genres">{{ g.name }} </ion-card-subtitle>
+      <ion-card-title>{{ searched?.name }}</ion-card-title>
+    </ion-card-header>
+    <ion-row>
+      <ion-col>
+        <ion-button (click)="buyGame(searched)" id="btn" expand="block" color="primary">Comprar</ion-button>
+      </ion-col>
+    </ion-row>
+  </ion-card>
+</ion-content>

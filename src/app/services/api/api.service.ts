@@ -11,6 +11,14 @@ export class ApiService {
   ) { }
 
   getGames(page: string) {
-    return this.http.get('https://api.rawg.io/api/games?key=4a73232670134cab91364b6491cca14a&page=' + page);
+    return this.http.get(`https://api.rawg.io/api/games?key=4a73232670134cab91364b6491cca14a&page=${page}`);
+  }
+
+  searchGame(slug: string) {
+    return this.http.get(`https://api.rawg.io/api/games/${slug}?key=4a73232670134cab91364b6491cca14a`);
+  }
+
+  getScreenshots(id: string) {
+    return this.http.get(`https://api.rawg.io/api/games/${id}/screenshots?key=4a73232670134cab91364b6491cca14a`);
   }
 }

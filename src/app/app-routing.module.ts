@@ -37,6 +37,15 @@ const routes: Routes = [
     loadChildren: () => import('./admin/admin.module').then( m => m.AdminPageModule),
     canActivate: [AuthGuard, AdminGuard]
   },
+  {
+    path: 'error404',
+    loadChildren: () => import('./error404/error404.module').then( m => m.Error404PageModule)
+  },
+  {
+    path: '**',
+    redirectTo: 'error404'
+  }
+
 ];
 
 @NgModule({

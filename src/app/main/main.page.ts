@@ -38,6 +38,21 @@ export class MainPage implements OnInit {
     });
   }
 
+  searchGame(slug: any) {
+    const game = slug.split(' ').join('-').toLowerCase();
+    
+    
+    this.api.searchGame(game).subscribe((res: any) => {
+      if (res.redirect !== undefined) {
+        this.router.navigate([`main/${this.currentPage}/search/${res.slug}`]);
+      } else {
+        this.router.navigate([`main/${this.currentPage}/search/${game}`]);
+      }
+    }, (err) => {
+      this.alert.createAlert('Juego no encontrado...');
+    });
+  }
+
   previousPage() {
     this.router.navigate(['main', parseInt(this.currentPage) - 1]);
   }
@@ -65,5 +80,4 @@ export class MainPage implements OnInit {
 
     return result;
   }
-
 }
