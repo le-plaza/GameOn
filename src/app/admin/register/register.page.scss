@@ -1,0 +1,17 @@
+ion-card-subtitle {
+    height: 100%;
+    display: flex;
+    margin-top: 10px;
+    margin-bottom: 6px;
+    ion-checkbox {
+        margin-left: 16px;
+        margin-right: 8px;
+    }
+    ion-checkbox::part(container) {
+        border-radius: 6px;
+        border: 2px solid white;
+      }
+    ion-label {
+        color: white;
+    }
+}

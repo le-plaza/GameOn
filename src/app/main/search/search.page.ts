@@ -32,8 +32,10 @@ export class SearchPage implements OnInit {
         const buyed = buyedgames.filter((i: any) => i.id_juego === game.id && i.id_user === this.token);
         
         if (buyed.length > 0) {
-          const btn = document.getElementById('btn');
-          btn?.setAttribute('disabled', 'true');
+          const btn = document.getElementById('btn') as HTMLElement;
+          btn.setAttribute('disabled', 'true');
+          btn.setAttribute('color', 'danger');
+          btn.innerHTML = 'Comprado';
         }
       });
       this.searched = game;
