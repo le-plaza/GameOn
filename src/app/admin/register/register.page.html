@@ -27,7 +27,11 @@
     </ion-item>
     <ion-item lines="full">
       <ion-label position="floating">Genero:</ion-label>
-      <ion-input type="text" formControlName="genero"></ion-input>
+      <ion-select formControlName="genero" placeholder="Seleccione un genero...">
+        <ion-select-option value="">Ninguno</ion-select-option>
+        <ion-select-option value="Masculino">Masculino</ion-select-option>
+        <ion-select-option value="Femenino">Femenino</ion-select-option>
+      </ion-select>
     </ion-item>
     <ion-item lines="full">
       <ion-label>Admin:</ion-label>
