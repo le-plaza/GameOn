@@ -7,12 +7,12 @@ export const environment = {
 };
 
 export const firebaseConfig = {
-  apiKey: "AIzaSyCUgLIrz1Vl0lFoB24Fz7UCQmlJWgUalco",
-  authDomain: "gameon-d7ec0.firebaseapp.com",
-  projectId: "gameon-d7ec0",
-  storageBucket: "gameon-d7ec0.appspot.com",
-  messagingSenderId: "396119350786",
-  appId: "1:396119350786:web:3603d98e362b9990de511b"
+  apiKey: "AIzaSyBERXrSc9kZMNh1y3_bfYE_jxgaX3ZK-WE",
+  authDomain: "examen-1d56d.firebaseapp.com",
+  projectId: "examen-1d56d",
+  storageBucket: "examen-1d56d.appspot.com",
+  messagingSenderId: "155207177524",
+  appId: "1:155207177524:web:d20e4ddcba9e8cad830161"
 };
 
 /*
